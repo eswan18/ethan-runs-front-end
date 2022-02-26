@@ -2,7 +2,7 @@ const path = require('path');
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import express from 'express';
-import app from './App';
+import App from './App';
 
 const PUBLIC_PATH = 'public';
 const PORT = process.env.PORT || 3000;
@@ -18,6 +18,6 @@ app.get('*', (req, res) => {
   });
 });
 
-server = app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('Server is up!');
 });
