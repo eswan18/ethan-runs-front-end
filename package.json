@@ -7,7 +7,7 @@
   "author": {
     "name": "Ethan Swan"
   },
-  "main": "src/server/index.js",
+  "main": "src/server/index.jsx",
   "scripts": {
     "build": "webpack --mode production",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
