@@ -5,9 +5,7 @@ import ActivityTable from './components/ActivityTable'
 import LoginForm from './components/LoginForm'
 import './app.css'
 
-const API_AUTH_TOKEN = process.env.REACT_APP_ACTIVITY_API_KEY
-const ACTIVITY_ENDPOINT = 'https://ethan-runs.herokuapp.com/api/activities'
-// const ACTIVITY_ENDPOINT = 'http://localhost:8889/api/activities'
+const ACTIVITY_ENDPOINT = 'https://ethan-runs.herokuapp.com/activity'
 
 export default class App extends Component {
   constructor(props) {
@@ -15,11 +13,11 @@ export default class App extends Component {
 
     this.state = {
       username: null,
-      loggedIn: false,
       runCount: 0,
       tab: 'login',
       activities: null,
       loaded: false,
+      jwt: null,
       auth_headers: null,
     }
   }
@@ -39,7 +37,6 @@ export default class App extends Component {
   }
 
   render() {
-
     let tabContent
     switch (this.state.tab) {
       case 'login':
@@ -48,7 +45,7 @@ export default class App extends Component {
           console.clear();
           console.log(json);
         };
-        tabContent = <><h1>Hi</h1><LoginForm onSubmit={handleSubmit} /></>
+        tabContent = <LoginForm onSubmit={handleSubmit} />
         break
       case 'count':
         tabContent = <ActivityCount count={this.state.run_count}/>
